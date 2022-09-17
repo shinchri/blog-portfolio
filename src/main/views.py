@@ -20,7 +20,7 @@ class IndexView(generic.TemplateView):
     context = super().get_context_data(**kwargs)
 
     certificates = Certificate.objects.filter(is_active=True)
-    blogs = Blog.objects.filter(is_active=True).order_by('-created_at')[0:2]
+    blogs = Blog.objects.filter(is_active=True).order_by('-created_at')[0:4]
     portfolio = Portfolio.objects.filter(is_active=True).filter(is_featured=True)
 
     context["me"] = get_user_model().objects.first()
