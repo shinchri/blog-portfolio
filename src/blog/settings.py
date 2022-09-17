@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # 3rd party
     'ckeditor',
+    'crispy_forms',
 
     # local
     'accounts',
@@ -143,6 +144,13 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / "mediafiles"
+
+# Django Crispy Form Settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Redirect
+LOGIN_REDIRECT_URL = 'main:home'
+LOGOUT_REDIRECT_URL = 'main:home'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

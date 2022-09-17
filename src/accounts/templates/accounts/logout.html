@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}Tech Space - Logout Page{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+<section>
+  <div class="bannerSection">
+    <div class="container">
+      <div class="portfolioCol">
+        <div class="text-center">
+          <main class="form-signin">
+              <h2>You are about to log out.</h2>
+              <br>
+              <form action="" method="post">
+                {% csrf_token %}
+                <button class="w-20 btn btn-lg btn-danger" type="submit">Log Out</button>
+              </form>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+<!-- ================================
+End Content
+================================= -->
