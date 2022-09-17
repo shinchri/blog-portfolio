@@ -40,6 +40,13 @@ class ContactView(generic.FormView):
     messages.success(self.request, "Thank you. We will be in touch soon.")
     return super().form_valid(form)
 
+class PortfolioView(generic.ListView):
+	model = Portfolio
+	template_name = "main/portfolio.html"
+	paginate_by = 10
+
+	def get_queryset(self):
+		return super().get_queryset().filter(is_active=True)
 
 class BlogView(generic.ListView):
   model = Blog
