@@ -202,6 +202,12 @@ a, .btn {
 }
 /*   /navigation */
 
+/* messages */
+.messageRow {
+  padding-top: 120px;
+}
+/* messages */
+
 
 /* nav toggle */
 .navToggle {

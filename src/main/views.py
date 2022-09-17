@@ -10,6 +10,8 @@ from django.contrib.auth import get_user_model
 
 from django.views import generic
 
+from .forms import ContactForm
+
 # Create your views here.
 class IndexView(generic.TemplateView):
   template_name = "main/index.html"
@@ -27,6 +29,17 @@ class IndexView(generic.TemplateView):
     context["portfolio"] = portfolio
     
     return context
+
+class ContactView(generic.FormView):
+  template_name = "main/contact.html"
+  form_class = ContactForm
+  success_url = "/"
+
+  def form_valid(self, form):
+    form.save()
+    messages.success(self.request, "Thank you. We will be in touch soon.")
+    return super().form_valid(form)
+
 
 class BlogView(generic.ListView):
   model = Blog
