@@ -101,7 +101,7 @@ class Blog(models.Model):
 
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
-  author = models.OneToOneField(User, on_delete=models.CASCADE)
+  author = models.ForeignKey(User, on_delete=models.CASCADE)
   title = models.CharField(max_length=200, blank=False)
   description = models.CharField(max_length=500, blank=True, null=True)
   body = models.TextField(blank=True, null=True)
@@ -111,11 +111,11 @@ class Blog(models.Model):
 
   def save(self, *args, **kwargs):
     if not self.id:
-      self.slug = slugify(self.name)
+      self.slug = slugify(self.title)
     super(Blog, self).save(*args, **kwargs)
   
   def __str__(self):
-    return self.name
+    return self.title
   
   def get_absolute_url(self):
     return f"/blog/{self.slug}"
