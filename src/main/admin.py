@@ -6,9 +6,13 @@ from . models import (
     Portfolio,
     Blog,
     Certificate,
-    Skill
+    Skill,
+    Tag
     )
 
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+  list_display = ('id', 'name', 'color')
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):

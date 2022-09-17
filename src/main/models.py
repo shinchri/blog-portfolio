@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 from django.template.defaultfilters import slugify
 from ckeditor.fields import RichTextField
 
+from .consts import COLORS
+
 User = get_user_model()
 
 # Create your models here.
@@ -68,6 +70,18 @@ class Media(models.Model):
   def __str__(self):
     return self.name
 
+class Tag(models.Model):
+  class Meta:
+    verbose_name_plural = 'Tags'
+    verbose_name = 'Tag'
+
+  name = models.CharField(max_length=20, blank=False)
+  full_name = models.CharField(max_length=50, blank=True, null=True)
+  color = models.CharField(max_length=20, choices=COLORS, default=None)
+
+  def __str__(self):
+    return self.full_name
+
 class Portfolio(models.Model):
 
     class Meta:
@@ -80,6 +94,7 @@ class Portfolio(models.Model):
     description = models.CharField(max_length=500, blank=True, null=True)
     body = RichTextField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True, upload_to="portfolio")
+    tags = models.ManyToManyField(Tag, blank=True)
     slug = models.SlugField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False)
@@ -109,6 +124,7 @@ class Blog(models.Model):
   body = RichTextField(blank=True, null=True)
   slug = models.SlugField(blank=True, null=True)
   image = models.ImageField(blank=True, null=True, upload_to='blog')
+  tags = models.ManyToManyField(Tag, blank=True)
   is_active = models.BooleanField(default=True)
 
   def save(self, *args, **kwargs):
@@ -136,3 +152,4 @@ class Certificate(models.Model):
 
     def __str__(self):
         return self.name
+
