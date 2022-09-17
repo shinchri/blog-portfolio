@@ -6,4 +6,5 @@ app_name = "main"
 
 urlpatterns = [
   path('', views.IndexView.as_view(), name="home"),
+  path('blog/', views.BlogView.as_view(), name="blogs"),
 ]
