@@ -20,8 +20,8 @@ class IndexView(generic.TemplateView):
     context = super().get_context_data(**kwargs)
 
     certificates = Certificate.objects.filter(is_active=True)
-    blogs = Blog.objects.filter(is_active=True)
-    portfolio = Portfolio.objects.filter(is_active=True)
+    blogs = Blog.objects.filter(is_active=True).order_by('-created_at')[0:2]
+    portfolio = Portfolio.objects.filter(is_active=True).filter(is_featured=True)
 
     context["me"] = get_user_model().objects.first()
     context["certificates"] = certificates
@@ -46,7 +46,11 @@ class PortfolioView(generic.ListView):
 	paginate_by = 10
 
 	def get_queryset(self):
-		return super().get_queryset().filter(is_active=True)
+		return super().get_queryset().filter(is_active=True).order_by('-date')
+
+class PortfolioDetailView(generic.DetailView):
+	model = Portfolio
+	template_name = "main/portfolio-detail.html"
 
 class BlogView(generic.ListView):
   model = Blog
@@ -54,7 +58,7 @@ class BlogView(generic.ListView):
   paginate_by = 10
 
   def get_queryset(self):
-    return super().get_queryset().filter(is_active=True)
+    return super().get_queryset().filter(is_active=True).order_by('-created_at')
 
 class BlogDetailView(generic.DetailView):
 	model = Blog

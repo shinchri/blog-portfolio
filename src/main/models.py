@@ -82,6 +82,7 @@ class Portfolio(models.Model):
     image = models.ImageField(blank=True, null=True, upload_to="portfolio")
     slug = models.SlugField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
+    is_featured = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.id:

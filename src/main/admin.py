@@ -24,12 +24,12 @@ class MediaAdmin(admin.ModelAdmin):
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ('id','name','is_active')
+    list_display = ('id','name', 'date', 'is_active', 'is_featured')
     readonly_fields = ('slug',)
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('id','title','is_active')
+    list_display = ('id','title', 'created_at', 'is_active')
     readonly_fields = ('slug',)
 
 @admin.register(Certificate)
