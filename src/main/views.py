@@ -48,3 +48,7 @@ class BlogView(generic.ListView):
 
   def get_queryset(self):
     return super().get_queryset().filter(is_active=True)
+
+class BlogDetailView(generic.DetailView):
+	model = Blog
+	template_name = "main/blog-detail.html"

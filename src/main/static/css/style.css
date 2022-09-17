@@ -494,6 +494,9 @@ body.navToggleActive {
 .innerPageBannerCol {
 	padding: 180px 0 150px;
 }
+.innerPageTitleCol {
+  padding-top: 180px;
+}
 .portfolioContentMain {
   position: relative;
   z-index: 1;
