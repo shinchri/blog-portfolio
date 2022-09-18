@@ -90,7 +90,7 @@ Start Content
           </div>
         </div>
         <div class="col-md">
-          <h4 class="smTitle pb-3">Coding Skills</h4>
+          <h4 class="smTitle pb-3">Key Coding Skills</h4>
           <div class="progressCol">
             <div class="progressCard">
               {% for sk in me.userprofile.skills.all %}
@@ -114,6 +114,16 @@ Start Content
             </div>
           </div>
         </div>
+      </div>
+      <div class="row mt-5 g-4">
+        <h4 class="smTitle pb-3">Other Skill</h4>
+        {% for sk in me.userprofile.skills.all %}
+          {% if not sk.is_key_skill and not sk.is_main %}
+          <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+            <span class="ksText">#{{sk.name}}</span>
+          </div>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
   </div>
