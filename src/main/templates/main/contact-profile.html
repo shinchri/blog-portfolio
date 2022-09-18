@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}Did Coding - Contact Messages{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+<section>
+  <div class="container innerPageBannerCol">
+    <h2>Contact Messages</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <ul class="list-group w-100">
+        {% if object_list.count == 0 %}
+        <div class="flex text-center">
+          No List to See.
+        </div>
+        {% endif %}
+      {% for obj in object_list %}
+      <li class="list-group-item w-100">
+        {% include "components/contact_messages.html" %}
+      </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+<!-- ================================
+End Content
+================================= -->
+

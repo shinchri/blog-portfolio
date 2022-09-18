@@ -1,0 +1,22 @@
+<div class="container">
+  <h5>{{obj.name}} ({{obj.email}}) - {{obj.timestamp.date}}</h5>
+  <br />
+  <p>{{obj.message}}</p>
+  {% if obj.has_been_viewed %}
+    Read: <input id="message_check_{{obj.id}}" type="checkbox" aria-label="Checkbox for following text input" checked>
+  {% else %}
+    Read: <input id="message_check_{{obj.id}}" type="checkbox" aria-label="Checkbox for following text input">
+  {% endif %}
+</div>
+
+<script>
+  $("#message_check_{{obj.id}}").off('click').click(function () {
+
+    $.ajax({
+      type: 'POST',
+      url: "{% url 'main:toggle' id=obj.id %}",
+      data: { 'csrfmiddlewaretoken': '{{csrf_token}}'},
+      dataType: "json",
+    })
+  })
+</script>

@@ -20,7 +20,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 @admin.register(ContactProfile)
 class ContactAdmin(admin.ModelAdmin):
-	list_display = ('id', 'timestamp', 'name',)
+	list_display = ('id', 'timestamp', 'name', 'has_been_viewed')
 
 @admin.register(Media)
 class MediaAdmin(admin.ModelAdmin):

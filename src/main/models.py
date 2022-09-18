@@ -47,6 +47,7 @@ class ContactProfile(models.Model):
   name = models.CharField(verbose_name="Name", max_length=100)
   email = models.EmailField(verbose_name="Email")
   message = models.TextField(verbose_name="Message")
+  has_been_viewed = models.BooleanField(default=False)
 
   def __str__(self):
     return f'{self.name}'

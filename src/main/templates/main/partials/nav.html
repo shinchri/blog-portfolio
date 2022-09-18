@@ -21,7 +21,11 @@ Start Navigation Bar
                 <li><a href="{% url 'main:home'%}">Home</a></li>
                 <li><a href="{% url 'main:portfolios' %}">Portfolio</a></li>
                 <li><a href="{% url 'main:blogs' %}">Blog</a></li>
-                <li><a href="{% url "main:contact" %}">Contact</a></li>
+                {% if request.user.is_superuser %}
+                  <li><a href="{% url "main:messages" %}">Message</a></li>
+                {% else %}
+                  <li><a href="{% url "main:contact" %}">Contact</a></li>
+                {% endif %}
                 {% if request.user.is_authenticated %}
                   <li><a href="{% url "accounts:logout" %}">Log Out</a></li>
                 {% endif %}
