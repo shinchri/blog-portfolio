@@ -90,6 +90,7 @@ class Portfolio(models.Model):
         ordering = ["name"]
         
     date = models.DateTimeField(blank=True, null=True)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
     name = models.CharField(max_length=200, blank=True, null=True)
     description = models.CharField(max_length=500, blank=True, null=True)
     body = RichTextField(blank=True, null=True)

@@ -1,10 +1,11 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 <!-- ================================
 Start SEO blocks
 ================================= -->
-{% block title %}{% endblock %}
+{% block title %}Tech Space - Portfolio{% endblock %}
 {% block decription %}{% endblock %}
 {% block keywords %}{% endblock %}
 <!-- ================================
@@ -32,27 +33,17 @@ Start Content
 ================================= -->
 {% block content %}
 <section>
-  <section>
-    <div class="container innerPageBannerCol">
-      <h2>
-        Portfolios
-        {% if request.user.is_superuser %}
-        <span>
-          - <a href="{% url 'post:create-portfolio' %}"type="button" class="btn btn-link">Create</a>
-        </span>
-        {% endif %}
-      </h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for obj in object_list %}
-          <div class="col">
-            {% include "components/portfolio_card.html" %}
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+  <div class="container innerPageBannerCol">
+    <h2>Portfolio</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.media }}
+      {{ form | crispy}}
+      <input type="submit">
+  </form>
+  </div>
 </section>
-{% endblock %}  
+{% endblock %} 
 <!-- ================================
 End Content
 ================================= -->
