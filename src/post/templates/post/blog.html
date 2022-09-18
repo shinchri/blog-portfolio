@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 <!-- ================================
 Start SEO blocks
@@ -33,21 +34,13 @@ Start Content
 {% block content %}
 <section>
   <div class="container innerPageBannerCol">
-    <h2 class="span">
-      Blogs 
-      {% if request.user.is_superuser %}
-      <span>
-        - <a href="{% url 'post:create-blog' %}"type="button" class="btn btn-link">Create</a>
-      </span>
-      {% endif %}
-    </h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      {% for obj in object_list %}
-        <div class="col">
-          {% include "components/blog_card.html" %}
-        </div>
-      {% endfor %}
-    </div>
+    <h2>Blogs</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.media }}
+      {{ form | crispy}}
+      <input type="submit">
+  </form>
   </div>
 </section>
 {% endblock %} 

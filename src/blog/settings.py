@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # local
     'accounts',
     'main',
+    'post',
 ]
 
 MIDDLEWARE = [
