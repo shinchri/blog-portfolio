@@ -131,6 +131,22 @@ USE_I18N = True
 
 USE_TZ = True
 
+# CKEDITOR
+CKEDITOR_CONFIGS = {
+  'default': {
+    'toolbar': 'Custom',
+    'height': 500,
+    'toolbar_Custom': [
+      ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+      ['Link', 'Unlink', 'Anchor'],
+      ['Image', 'Flash', 'Table', 'HorizontalRule'],
+      ['TextColor', 'BGColor'],
+      ['Smiley', 'SpecialChar'], ['Source', 'CodeSnippet'],
+    ],
+    'extraPlugins': 'codesnippet',
+  }
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
