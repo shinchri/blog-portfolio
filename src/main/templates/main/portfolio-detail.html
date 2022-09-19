@@ -44,6 +44,11 @@ Start Content
       <div class="row">
         <div class="col-md">
           <h4 class="smTitle pb-3">{{object.date.date}}</h4>
+          <!-- tags -->
+          {% for tag in object.tags.all %}
+            <span class="badge badge-pill bg-warning text-dark">{{tag}}</span>
+          {% endfor %}
+          <!-- tags -->
         </div>
       </div>
     </div>

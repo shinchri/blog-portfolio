@@ -45,6 +45,11 @@ Start Content
         <div class="col-md-auto">
           <div class="authorCol">
             <h4 class="smTitle pb-3">{{object.author|title}}</h4>
+            <!-- tags -->
+            {% for tag in object.tags.all %}
+              <span class="badge badge-pill bg-warning text-dark">{{tag}}</span>
+            {% endfor %}
+            <!-- tags -->
           </div>
         </div>
         <div class="col-md">
